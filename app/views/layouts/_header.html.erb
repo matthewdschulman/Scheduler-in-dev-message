@@ -1,0 +1,22 @@
+<header class="navbar navbar-inverse" style="width:100%; background-color:whitesmoke;border-radius:0px;border:0px" >
+  <div class="navbar-inner">
+  <% if signed_in? %>
+    <div class="container">
+      <h1 style = "color:#428bca">Scheduler</h1>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if signed_in? %>
+            <%= button_to "Sign out", signout_path, method: "delete", class: "btn btn-success btn-small" %>
+          <% else %>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  <% else %>
+    <div class="container" style="height:64px;">
+      <h1 style = "color:#428bca">Scheduler</h1>
+    </div>
+  <% end %>
+  </div>
+</header>
+

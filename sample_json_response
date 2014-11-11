@@ -1,0 +1,421 @@
+{
+  "accounts": [
+    {
+      "_id": "5414d49a62f3e9565f713745",
+      "_item": "5414d42462f3e9565f71373f",
+      "_user": "5414d42362f3e9565f71373e",
+      "balance": {
+        "current": 7526.85
+      },
+      "institution_type": "bofa",
+      "meta": {
+        "official_name": "BofA Core Checking",
+        "number": "0430",
+        "name": "BofA Core Checking - 0430",
+        "limit": null
+      },
+      "type": "depository"
+    }
+  ],
+  "transactions": [
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49a62f3e9565f713746",
+      "_id": "5414d49b62f3e9565f71375b",
+      "amount": 2.5,
+      "date": "2014-09-12",
+      "name": "Bank Xpress",
+      "meta": {
+        "location": {}
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Bank Fees"
+      ],
+      "category_id": "537426b570d8a0ac65000001"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49a62f3e9565f713747",
+      "_id": "5414d49b62f3e9565f71375a",
+      "amount": 2.5,
+      "date": "2014-09-12",
+      "name": "Bank Xpress",
+      "meta": {
+        "location": {}
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Bank Fees"
+      ],
+      "category_id": "537426b570d8a0ac65000001"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49a62f3e9565f713748",
+      "_id": "5414d49b62f3e9565f71375e",
+      "amount": 388.93,
+      "date": "2014-09-12",
+      "name": "Discover Des:e Payment Id:xxxxx Indn:schulman Matthew Id:xxxxx20270 Web",
+      "meta": {
+        "location": {
+          "state": "CO"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Payment"
+      ],
+      "category_id": "53742c114fd7f2f065000001"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49a62f3e9565f713749",
+      "_id": "5414d49b62f3e9565f713759",
+      "amount": 2400,
+      "date": "2014-09-09",
+      "name": "Check 104",
+      "meta": {
+        "location": {}
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Transfer",
+        "Withdrawal",
+        "Check"
+      ],
+      "category_id": "53742da54fd7f2f065000003"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49a62f3e9565f71374a",
+      "_id": "5414d49b62f3e9565f713762",
+      "amount": 40,
+      "date": "2014-09-07",
+      "name": "Atm Withdrawal",
+      "meta": {
+        "location": {
+          "state": "PA",
+          "city": "Philadelphia"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Transfer",
+        "Withdrawal",
+        "ATM"
+      ],
+      "category_id": "5374277870d8a0ac6500001c"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "53d0b8e0fec6ea8842d9abcc",
+      "_id": "5414d49b62f3e9565f713755",
+      "amount": 17.8,
+      "date": "2014-09-02",
+      "name": "amazon.com",
+      "meta": {
+        "location": {
+          "state": "WA",
+          "city": "Seattle",
+          "address": "1512 2 Nd Ave"
+        },
+        "contact": {
+          "website": "amazon.com"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0.5,
+        "detail": {
+          "identifier": 1,
+          "website": 1
+        }
+      },
+      "type": {
+        "primary": "digital",
+        "secondary": "unresolved"
+      },
+      "category": [
+        "Miscellaneous"
+      ],
+      "category_id": "52544965f71e87d007000088"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49b62f3e9565f71374c",
+      "_id": "5414d49b62f3e9565f71375d",
+      "amount": -446.24,
+      "date": "2014-09-02",
+      "name": "Venmo Des:cashout Id:xxxxx787 Indn:matt Schulman Id:xxxxx81992 Ccd",
+      "meta": {
+        "location": {
+          "state": "CO"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Transfer",
+        "Deposit"
+      ],
+      "category_id": "5374271970d8a0ac6500000a"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "53d15d2bb53d3bdd207c0661",
+      "_id": "5414d49b62f3e9565f713757",
+      "amount": 94.85,
+      "date": "2014-08-29",
+      "name": "amzn.com",
+      "meta": {
+        "location": {},
+        "contact": {
+          "website": "amzn.com"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0.5,
+        "detail": {
+          "identifier": 1,
+          "website": 1
+        }
+      },
+      "type": {
+        "primary": "digital",
+        "secondary": "unresolved"
+      }
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "53d0b8e0fec6ea8842d9abcc",
+      "_id": "5414d49b62f3e9565f713758",
+      "amount": 23.91,
+      "date": "2014-08-29",
+      "name": "amazon.com",
+      "meta": {
+        "location": {
+          "state": "WA",
+          "city": "Seattle",
+          "address": "1512 2 Nd Ave"
+        },
+        "contact": {
+          "website": "amazon.com"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0.5,
+        "detail": {
+          "identifier": 1,
+          "website": 1
+        }
+      },
+      "type": {
+        "primary": "digital",
+        "secondary": "unresolved"
+      },
+      "category": [
+        "Miscellaneous"
+      ],
+      "category_id": "52544965f71e87d007000088"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "53d0b8e0fec6ea8842d9abcc",
+      "_id": "5414d49b62f3e9565f713756",
+      "amount": 15.31,
+      "date": "2014-08-29",
+      "name": "amazon.com",
+      "meta": {
+        "location": {
+          "state": "WA",
+          "city": "Seattle",
+          "address": "1512 2 Nd Ave"
+        },
+        "contact": {
+          "website": "amazon.com"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0.5,
+        "detail": {
+          "identifier": 1,
+          "website": 1
+        }
+      },
+      "type": {
+        "primary": "digital",
+        "secondary": "unresolved"
+      },
+      "category": [
+        "Miscellaneous"
+      ],
+      "category_id": "52544965f71e87d007000088"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49b62f3e9565f713750",
+      "_id": "5414d49b62f3e9565f71375c",
+      "amount": 526.57,
+      "date": "2014-08-28",
+      "name": "Discover Des:e Payment Id:xxxxx Indn:schulman Matthew Id:xxxxx20270 Web",
+      "meta": {
+        "location": {
+          "state": "CO"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Payment"
+      ],
+      "category_id": "53742c114fd7f2f065000001"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49b62f3e9565f713751",
+      "_id": "5414d49b62f3e9565f713763",
+      "amount": 260,
+      "date": "2014-08-23",
+      "name": "Atm Withdrawal",
+      "meta": {
+        "location": {
+          "state": "PA",
+          "city": "Philadelphia"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Transfer",
+        "Withdrawal",
+        "ATM"
+      ],
+      "category_id": "5374277870d8a0ac6500001c"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49b62f3e9565f713752",
+      "_id": "5414d49b62f3e9565f71375f",
+      "amount": 500.14,
+      "date": "2014-08-20",
+      "name": "Discover Des:e Payment Id:xxxxx Indn:schulman Matthew Id:xxxxx20270 Web",
+      "meta": {
+        "location": {
+          "state": "CO"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Payment"
+      ],
+      "category_id": "53742c114fd7f2f065000001"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49b62f3e9565f713753",
+      "_id": "5414d49b62f3e9565f713761",
+      "amount": 20,
+      "date": "2014-08-15",
+      "name": "Atm Withdrawal",
+      "meta": {
+        "location": {
+          "state": "CA",
+          "city": "San Francisco"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Transfer",
+        "Withdrawal",
+        "ATM"
+      ],
+      "category_id": "5374277870d8a0ac6500001c"
+    },
+    {
+      "_account": "5414d49a62f3e9565f713745",
+      "_entity": "5414d49b62f3e9565f713754",
+      "_id": "5414d49b62f3e9565f713760",
+      "amount": -2336.34,
+      "date": "2014-08-15",
+      "name": "Microsoft Des:edipayment Id:xxxxx81114280 P8 Indn:schulman Matthew Id:xxxxx44442 Ppd",
+      "meta": {
+        "location": {
+          "state": "CO"
+        }
+      },
+      "pending": false,
+      "score": {
+        "master": 0
+      },
+      "type": {
+        "primary": "unresolved"
+      },
+      "category": [
+        "Transfer",
+        "Deposit"
+      ],
+      "category_id": "5374271970d8a0ac6500000a"
+    }
+  ],
+  "access_token": "WyI1NDEzNzdhOWE2MjE3MTAwMDBmZjM2MjEiLCI1NDE0ZDQyMzYyZjNlOTU2NWY3MTM3M2UiLCI1NDE0ZDQyNDYyZjNlOTU2NWY3MTM3M2YiXQ=="

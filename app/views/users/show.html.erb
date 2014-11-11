@@ -1,0 +1,280 @@
+<style>
+  .axis path, .axis line
+        {
+            fill: none;
+            stroke: #777;
+            shape-rendering: crispEdges;
+        }
+        
+        .axis text
+        {
+            font-family: 'Arial';
+            font-size: 13px;
+        }
+        .tick
+        {
+            stroke-dasharray: 1, 2;
+        }
+        .bar
+        {
+            fill: FireBrick;
+        }
+</style>
+
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @user.name %><br>
+        <%= "My Cents This Week: #{@cur_user_this_week_cents_count}" %><br>
+        <%= "My All Time Cents: #{@cur_user_cents_count}" %><br>
+        <%= "All Time Common Cents: #{@all_time_cents_count}" %>
+      </h1>
+    </section> 
+  </aside>
+  <div class="span8" style="position:relative; right:500px; top:100px;">
+    <svg id="visualisation" width="1000" height="500" style="background-color:rgb(238, 238, 238); border: 2px solid;
+    border-radius: 25px;"></svg>
+  </div>
+  
+  
+</div>
+
+
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+  var weekday = new Array(7);
+  weekday[0]=  "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
+  var month = new Array(12);
+  month[0] = "Jan";
+  month[1] = "Feb";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "Aug";
+  month[8] = "Sep";
+  month[9] = "Oct";
+  month[10] = "Nov";
+  month[11] = "Dec";
+
+  today = new Date(new Date().setDate(new Date().getDate()-0));
+  oneDayAgo = new Date(new Date().setDate(new Date().getDate()-1));
+  twoDaysAgo = new Date(new Date().setDate(new Date().getDate()-2));
+  threeDaysAgo = new Date(new Date().setDate(new Date().getDate()-3));
+  fourDaysAgo = new Date(new Date().setDate(new Date().getDate()-4));
+  fiveDaysAgo = new Date(new Date().setDate(new Date().getDate()-5));
+  sixDaysAgo = new Date(new Date().setDate(new Date().getDate()-6)); 
+
+  curMonth = sixDaysAgo.getMonth();
+  curMonth += 1;
+  if (curMonth < 10) {
+    curMonth = "0"+curMonth;
+  }
+  date = sixDaysAgo.getDate();
+  if (date < 10) {
+    date = "0"+date;
+  }
+  var sixDaysAgoShort = sixDaysAgo.getFullYear() + "-" + curMonth + "-" + date;
+
+  curMonth = fiveDaysAgo.getMonth();
+  curMonth += 1;
+  if (curMonth < 10) {
+    curMonth = "0"+curMonth;
+  }
+  date = fiveDaysAgo.getDate();
+  if (date < 10) {
+    date = "0"+date;
+  }
+  var fiveDaysAgoShort = fiveDaysAgo.getFullYear() + "-" + curMonth + "-" + date;
+
+  curMonth = fourDaysAgo.getMonth();
+  curMonth += 1;
+  if (curMonth < 10) {
+    curMonth = "0"+curMonth;
+  }
+  date = fourDaysAgo.getDate();
+  if (date < 10) {
+    date = "0"+date;
+  }
+  var fourDaysAgoShort = fourDaysAgo.getFullYear() + "-" + curMonth + "-" + date;
+
+  curMonth = threeDaysAgo.getMonth();
+  curMonth += 1;
+  if (curMonth < 10) {
+    curMonth = "0"+curMonth;
+  }
+  date = threeDaysAgo.getDate();
+  if (date < 10) {
+    date = "0"+date;
+  }
+  var threeDaysAgoShort = threeDaysAgo.getFullYear() + "-" + curMonth + "-" + date;
+
+  curMonth = twoDaysAgo.getMonth();
+  curMonth += 1;
+  if (curMonth < 10) {
+    curMonth = "0"+curMonth;
+  }
+  date = twoDaysAgo.getDate();
+  if (date < 10) {
+    date = "0"+date;
+  }
+  var twoDaysAgoShort = twoDaysAgo.getFullYear() + "-" + curMonth + "-" + date;
+
+  curMonth = oneDayAgo.getMonth();
+  curMonth += 1;
+  if (curMonth < 10) {
+    curMonth = "0"+curMonth;
+  }
+  date = oneDayAgo.getDate();
+  if (date < 10) {
+    date = "0"+date;
+  }
+  var oneDayAgoShort = oneDayAgo.getFullYear() + "-" + curMonth + "-" + date;
+
+  curMonth = today.getMonth();
+  curMonth += 1;
+  if (curMonth < 10) {
+    curMonth = "0"+curMonth;
+  }
+  date = today.getDate();
+  if (date < 10) {
+    date = "0"+date;
+  }
+  var todayShort = today.getFullYear() + "-" + curMonth + "-" + date;
+
+  var dayByDayCents = new Object();
+  dayByDayCents[todayShort] = 0;
+  dayByDayCents[oneDayAgoShort] = 0;
+  dayByDayCents[twoDaysAgoShort] = 0;
+  dayByDayCents[threeDaysAgoShort] = 0;
+  dayByDayCents[fourDaysAgoShort] = 0;
+  dayByDayCents[fiveDaysAgoShort] = 0;
+  dayByDayCents[sixDaysAgoShort] = 0;
+
+  var totalNumOfDaysToConsider = 7;
+
+  var totalCentsAllTime = 0;
+  for (var k in gon.transactions_hash) {
+    var curDayTransactionsArr = gon.transactions_hash[k];
+    for (var i = 0; i < curDayTransactionsArr.length; i++) {
+      totalCentsAllTime += eval(curDayTransactionsArr[i].roundup)*100;
+      if (i < (totalNumOfDaysToConsider + 1)) {
+        dayByDayCents[k] += eval(curDayTransactionsArr[i].roundup)*100;
+      }
+    }
+  }
+
+  var totalCentsThisWeek = 0;
+  for (var k in dayByDayCents) {
+    console.log(dayByDayCents[k]);
+    console.log(totalCentsThisWeek);
+    totalCentsThisWeek += dayByDayCents[k];
+  }
+
+  InitChart();
+
+  function InitChart() {
+    
+    var barData = [{
+      'x': weekday[sixDaysAgo.getDay()] + ", " + month[sixDaysAgo.getMonth()] + " " + sixDaysAgo.getDate(),
+      'y': dayByDayCents[sixDaysAgoShort]
+    }, {
+      'x': weekday[fiveDaysAgo.getDay()] + ", " + month[fiveDaysAgo.getMonth()] + " " + fiveDaysAgo.getDate(),
+      'y': dayByDayCents[fiveDaysAgoShort]
+    }, {
+      'x': weekday[fourDaysAgo.getDay()] + ", " + month[fourDaysAgo.getMonth()] + " " + fourDaysAgo.getDate(),
+      'y': dayByDayCents[fourDaysAgoShort]
+    }, {
+      'x': weekday[threeDaysAgo.getDay()] + ", " + month[threeDaysAgo.getMonth()] + " " + threeDaysAgo.getDate(),
+      'y': dayByDayCents[threeDaysAgoShort]
+    }, {
+      'x': weekday[twoDaysAgo.getDay()] + ", " + month[twoDaysAgo.getMonth()] + " " + twoDaysAgo.getDate(),
+      'y': dayByDayCents[twoDaysAgoShort]
+    }, {
+      'x': weekday[oneDayAgo.getDay()] + ", " + month[oneDayAgo.getMonth()] + " " + oneDayAgo.getDate(),
+      'y': dayByDayCents[oneDayAgoShort]
+    }, {
+      'x': weekday[today.getDay()] + ", " + month[today.getMonth()] + " " + today.getDate(),
+      'y': dayByDayCents[today]
+    }];
+
+    var vis = d3.select('#visualisation'),
+      WIDTH = 1000,
+      HEIGHT = 500,
+      MARGINS = {
+        top: 20,
+        right: 20,
+        bottom: 20,
+        left: 50
+      },
+      xRange = d3.scale.ordinal().rangeRoundBands([MARGINS.left, WIDTH - MARGINS.right], 0.1).domain(barData.map(function (d) {
+        return d.x;
+      })),
+
+
+      yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0,
+        d3.max(barData, function (d) {
+          return d.y;
+        })
+      ]),
+
+      xAxis = d3.svg.axis()
+        .scale(xRange)
+        .tickSize(5)
+        .tickSubdivide(true),
+
+      yAxis = d3.svg.axis()
+        .scale(yRange)
+        .tickSize(5)
+        .orient("left")
+        .tickSubdivide(true);
+
+
+    vis.append('svg:g')
+      .attr('class', 'x axis')
+      .attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')')
+      .call(xAxis);
+
+    vis.append('svg:g')
+      .attr('class', 'y axis')
+      .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
+      .call(yAxis);
+
+    vis.selectAll('rect')
+      .data(barData)
+      .enter()
+      .append('rect')
+      .attr('x', function (d) {
+        return xRange(d.x);
+      })
+      .attr('y', function (d) {
+        return yRange(d.y);
+      })
+      .attr('width', xRange.rangeBand())
+      .attr('height', function (d) {
+        return ((HEIGHT - MARGINS.bottom) - yRange(d.y));
+      })
+      .attr('fill', '#800000')
+      .on('mouseover',function(d){
+        d3.select(this)
+          .attr('fill','#003D00');
+      })
+      .on('mouseout',function(d){
+        d3.select(this)
+          .attr('fill','#800000');
+      });
+
+}
+</script>
